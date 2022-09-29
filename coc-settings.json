@@ -38,5 +38,5 @@
 	"python.formatting.blackPath": "~/.local/bin/black",
 	"prettier.singleQuote": true,
 	"pyright.completion.snippetSupport": true,
-	"python.analysis.typeCheckingMode": "strict"
+	"python.analysis.typeCheckingMode": "basic"
 }
