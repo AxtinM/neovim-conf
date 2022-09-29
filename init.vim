@@ -7,6 +7,9 @@
 :set softtabstop=4
 :set mouse=a
 
+"Changing Leader Key
+let mapleader = ","
+
 call plug#begin()
 
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
@@ -21,21 +24,41 @@ Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'} " syntax parser
+Plug 'nvim-lua/plenary.nvim' " dependency for telescope
+Plug 'https://github.com/nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }  " Gaze deeply into unknow regions
 
 set encoding=UTF-8
 
 call plug#end()
 
+" NerdTree Commands
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Jump To definition Command
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+" mapping keys for moving lines
+nnoremap <A-Down> :m .+1<CR>==
+nnoremap <A-Up> :m .-2<CR>==
+inoremap <A-Down> <Esc>:m .+1<CR>==gi
+inoremap <A-Up> <Esc>:m .-2<CR>==gi
+vnoremap <A-Down> :m '>+1<CR>gv=gv
+vnoremap <A-Up> :m '<-2<CR>gv=gv
 
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
 
-:colorscheme atom
+:colorscheme space-vim-dark 
 
 " let g:NERDTreeDirArrowExpandable="+"
 " let g:NERDTreeDirArrowCollapsible="~"
@@ -47,6 +70,9 @@ nmap <F8> :TagbarToggle<CR>
 " :CocInstall coc-clangd
 " :CocInstall coc-snippets
 " :CocCommand snippets.edit... FOR EACH FILE TYPE
+
+"python Neovim interpreter path
+let g:python3_host_prog = '~/PyEnv/nvim/bin/python'
 
 " air-line
 let g:airline_powerline_fonts = 1

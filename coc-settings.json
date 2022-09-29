@@ -15,6 +15,10 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
-}
+  ],
 
+  //jedi path specification
+  "python.jediPath": "/home/mortal/.local/lib/python3.9/site-packages"
+
+
+}
