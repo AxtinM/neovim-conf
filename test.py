@@ -1,4 +1,4 @@
-def hero(): 
+def hero():
     print("hello")
 
 

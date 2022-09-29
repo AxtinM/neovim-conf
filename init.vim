@@ -7,12 +7,29 @@
 :set softtabstop=4
 :set mouse=a
 
+" True color if available
+let term_program=$TERM_PROGRAM
+
+" Check for conflicts with Apple Terminal app
+if term_program !=? 'Apple_Terminal'
+    set termguicolors
+else
+    if $TERM !=? 'xterm-256color'
+        set termguicolors
+    endif
+endif
+
+" Italics
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
 "Changing Leader Key
 let mapleader = ","
 
 call plug#begin()
 
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+Plug 'jiangmiao/auto-pairs' " automatically close ( { [
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
@@ -22,11 +39,14 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
-Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
+Plug 'https://github.com/preservim/tagbar' " .Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'} " syntax parser
+Plug 'lewis6991/spellsitter.nvim' " Enable Neovim's builtin spellchecker for buffers with tree-sitter highlighting.
 Plug 'nvim-lua/plenary.nvim' " dependency for telescope
 Plug 'https://github.com/nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }  " Gaze deeply into unknow regions
+Plug 'plasticboy/vim-markdown' " Better Markdow view
+Plug 'airblade/vim-gitgutter' " Git
 
 set encoding=UTF-8
 
@@ -62,6 +82,7 @@ nmap <F8> :TagbarToggle<CR>
 
 " let g:NERDTreeDirArrowExpandable="+"
 " let g:NERDTreeDirArrowCollapsible="~"
+let NERDTreeShowHidden=1
 
 " --- Just Some Notes ---
 " :PlugClean :PlugInstall :UpdateRemotePlugins
@@ -71,8 +92,8 @@ nmap <F8> :TagbarToggle<CR>
 " :CocInstall coc-snippets
 " :CocCommand snippets.edit... FOR EACH FILE TYPE
 
-"python Neovim interpreter path
-let g:python3_host_prog = '~/PyEnv/nvim/bin/python'
+" python Neovim interpreter path
+" let g:python3_host_prog = '~/PyEnv/nvim/bin/python'
 
 " air-line
 let g:airline_powerline_fonts = 1
@@ -89,4 +110,8 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+" Language server stuff
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
 

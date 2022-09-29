@@ -1,10 +1,20 @@
 {
   // Require .prettierrc
   "prettier.requireConfig": true,
-
-  // Tslint on save
-  "tslint.enable": true,
-  "tslint.autoFixOnSave": true,
+  // Eslint Config
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onType",
+  "eslint.autoFixOnSave": true,
+  "eslint.probe": [
+  	"javascript",
+  	"javascriptreact",
+  	"typescript",
+  	"typescriptreact",
+  	"html",
+  	"vue",
+  	"markdown"
+  ],
 
   // Run prettier (and others)
   "coc.preferences.formatOnSaveFiletypes": [
@@ -14,11 +24,19 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+	"python",
+	"scss",
+	"sass",
+	"html",
+	"json"
   ],
 
-  //jedi path specification
-  "python.jediPath": "/home/mortal/.local/lib/python3.9/site-packages"
-
-
+  // jedi path specification
+  // "python.jediPath": "/home/mortal/.local/lib/python3.9/site-packages",
+	"python.formatting.provider": "black",
+	"python.formatting.blackPath": "~/.local/bin/black",
+	"prettier.singleQuote": true,
+	"pyright.completion.snippetSupport": true,
+	"python.analysis.typeCheckingMode": "strict"
 }
