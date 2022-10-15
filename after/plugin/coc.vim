@@ -54,3 +54,5 @@ vmap <leader>cf  <Plug>(coc-format-selected)
 vmap <leader>ca  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction-selected)
 
+" run format on save
+autocmd BufWritePost * call CocActionAsync('format')

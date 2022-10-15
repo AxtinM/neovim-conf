@@ -7,36 +7,39 @@
   "eslint.run": "onType",
   "eslint.autoFixOnSave": true,
   "eslint.probe": [
-  	"javascript",
-  	"javascriptreact",
-  	"typescript",
-  	"typescriptreact",
-  	"html",
-  	"vue",
-  	"markdown"
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown"
   ],
 
   // Run prettier (and others)
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
-    "markdown",
-    "Markdown",
+    "html",
     "javascript",
     "javascriptreact",
+    "json",
+    "jsonc",
+    "markdown",
+    "ruby",
+    "scss",
     "typescript",
     "typescriptreact",
-	"python",
-	"scss",
-	"sass",
-	"html",
-	"json"
+    "yaml",
+    "vim",
+    "prisma"
   ],
 
   // jedi path specification
   // "python.jediPath": "/home/mortal/.local/lib/python3.9/site-packages",
-	"python.formatting.provider": "black",
-	"python.formatting.blackPath": "~/.local/bin/black",
-	"prettier.singleQuote": true,
-	"pyright.completion.snippetSupport": true,
-	"python.analysis.typeCheckingMode": "basic"
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.local/bin/black",
+  "prettier.singleQuote": true,
+  "pyright.completion.snippetSupport": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.venvPath": "${env:HOME}/PyEnv"
 }
