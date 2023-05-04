@@ -5,14 +5,11 @@ local code_actions = null_ls.builtins.code_actions
 
 local sources = {
 	--[[ formatting ]]
-	formatting.eslint,
-	formatting.autopep8,
-	formatting.stylua,
-	formatting.clang_format,
-	formatting.stylelint,
-	formatting.prettier,
-	formatting.phpcbf,
+  formatting.shfmt,
+	formatting.autoflake,
+  formatting.prettier,
 
+  
 	--[[ code actions ]]
 	code_actions.eslint_d,
 }
