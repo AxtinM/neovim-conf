@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
 
   use 'nvim-lualine/lualine.nvim'
 
-  use 'nvim-treesitter/nvim-treesitter'
+  use 'NvChad/nvim-colorizer.lua'
 
   use {
       'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -48,15 +48,21 @@ return require('packer').startup(function(use)
 
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   
+  -- LSP
   use("hrsh7th/nvim-cmp") --> Autocompletion plugin
 
 	use("hrsh7th/cmp-nvim-lsp") --> LSP source for nvim-cmp
+
+  use { "github/copilot.vim" } --> github copilot 
+
+  use 'nvim-treesitter/nvim-treesitter'
 
   use("saadparwaiz1/cmp_luasnip") --> Snippets source for nvim-cmp
 
   use("jose-elias-alvarez/null-ls.nvim") --> inject lsp diagnistocs, formattings, code actions, and more ...
 
   use("tami5/lspsaga.nvim") --> icons for LSP diagnostics
+  -- End LSP
 
 	use("onsails/lspkind-nvim") --> vscode-like pictograms for neovim lsp completion items
 
@@ -71,6 +77,7 @@ return require('packer').startup(function(use)
   use {   "windwp/nvim-autopairs",
           config = function() require("nvim-autopairs").setup {} end
       }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
