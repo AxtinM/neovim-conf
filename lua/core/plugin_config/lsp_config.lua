@@ -31,26 +31,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-require("lspconfig")["pyright"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig")["cssls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig")["emmet_ls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig")["tsserver"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
 
 require("lspconfig")["lua_ls"].setup({
 	on_attach = on_attach,
@@ -64,22 +44,22 @@ require("lspconfig")["lua_ls"].setup({
   }
 })
 
-require("lspconfig")["texlab"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+local server = {
+  "pyright",
+  "cssls",
+  "emmet_ls",
+  "tsserver",
+  "texlab",
+  "ltex",
+  "bashls",
+  "clangd",
+  "gopls",
+  "markdownlint",
+}
 
-require("lspconfig")["ltex"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig")["bashls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig")["clangd"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+for _, server in ipairs(server) do
+  require("lspconfig")[server].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end

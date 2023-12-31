@@ -2,7 +2,6 @@ require'nvim-treesitter.configs'.setup {
   context_commentstring = {
     enable = true,
     config = {
-      html = '// %s',
       css = '// %s',
       javascript = {
         __default = '// %s',

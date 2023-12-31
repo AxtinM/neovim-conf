@@ -34,7 +34,9 @@ return require('packer').startup(function(use)
       "neovim/nvim-lspconfig",
     }
 
-  use 'ellisonleao/gruvbox.nvim'
+  --[[ use 'ellisonleao/gruvbox.nvim' ]]
+  --
+  use "folke/tokyonight.nvim"
 
   use "lukas-reineke/indent-blankline.nvim"
 
@@ -44,16 +46,22 @@ return require('packer').startup(function(use)
           require'alpha'.setup(require'alpha.themes.dashboard'.config)
           end
       }
+
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
   use 'numToStr/Comment.nvim'
 
   use 'JoosepAlviste/nvim-ts-context-commentstring'
-  
   -- LSP
   use("hrsh7th/nvim-cmp") --> Autocompletion plugin
 
 	use("hrsh7th/cmp-nvim-lsp") --> LSP source for nvim-cmp
 
-  use { "github/copilot.vim" } --> github copilot 
+  use("tpope/vim-fugitive") --> Fugitive is the premier Vim plugin for Git
+
+  use("lewis6991/gitsigns.nvim") --> Super fast git decorations implemented purely in lua/teal.
+
+  use( "github/copilot.vim")  --> Github copilot 
 
   use 'nvim-treesitter/nvim-treesitter'
 
