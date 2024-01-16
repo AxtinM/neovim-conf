@@ -24,8 +24,6 @@ vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", {noremap=true})
 -- splits
 vim.api.nvim_set_keymap("n", "<C-W>,", ":vertical resize -10<CR>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", {noremap=true})
-vim.keymap.set('n', '<space><space>', "<cmd>set nohlsearch<CR>")
-
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`

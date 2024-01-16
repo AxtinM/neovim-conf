@@ -57,7 +57,8 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'emmet_ls', 'intelephense'  }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'emmet_ls', 'intelephense', 'lua_ls',
+  'marksman', 'html', 'dockerls', 'docker_compose_language_service', 'cssls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -84,6 +85,16 @@ require('fidget').setup()
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
+
+require('lspconfig').lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = { globals = { 'vim' } }
+    }
+  }
+}
 
 require('lspconfig').luau_lsp.setup {
   on_attach = on_attach,
@@ -115,7 +126,7 @@ local luasnip = require 'luasnip'
 
 cmp.setup {
   view = {
-  	entries = "native"
+    entries = "native"
   },
   snippet = {
     expand = function(args)
@@ -165,4 +176,3 @@ vim.api.nvim_create_autocmd('FileType', {
     })
   end,
 })
-
